@@ -73,11 +73,12 @@ public class Listener extends ListenerAdapter
                 try
                 {
                     User owner = bot.getJDA().retrieveUserById(bot.getConfig().getOwnerId()).complete();
-                    String currentVersion = OtherUtil.getCurrentVersion();
+                    String currentVersion = OtherUtil.getCurrentVersion().replaceAll("[a-zA-Z]", "");
                     String latestVersion = OtherUtil.getLatestVersion();
-                    if(latestVersion!=null && !currentVersion.equalsIgnoreCase(latestVersion))
+                    String lvSanitized = latestVersion == null ? null : latestVersion.replaceAll("[a-zA-Z]", "");
+                    if(lvSanitized!=null && !currentVersion.equalsIgnoreCase(latestVersion))
                     {
-                        String msg = String.format(OtherUtil.NEW_VERSION_AVAILABLE, currentVersion, latestVersion);
+                        String msg = String.format(OtherUtil.NEW_VERSION_AVAILABLE, currentVersion, lvSanitized);
                         owner.openPrivateChannel().queue(pc -> pc.sendMessage(msg).queue());
                     }
                 }
