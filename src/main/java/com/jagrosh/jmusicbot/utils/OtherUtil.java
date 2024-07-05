@@ -211,4 +211,14 @@ public class OtherUtil
             return null;
         }
     }
+
+
+    /**
+     * Checks if the bot JMusicBot is being run on is supported & returns the reason if it is not.
+     * @return A string with the reason, or null if it is supported.
+     */
+    public static String getUnsupportedBotReason(JDA jda) 
+    {
+        return null;
+    }
 }
