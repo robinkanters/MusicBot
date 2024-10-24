@@ -52,7 +52,7 @@ public class PlayerManager extends DefaultAudioPlayerManager
         YoutubeAudioSourceManager yt = new YoutubeAudioSourceManager(true);
 
         String oauthToken = System.getenv("YT_OAUTH_TOKEN");
-        if (oauthToken != null) yt.useOauth2(oauthToken, true);
+        if (oauthToken != null) yt.useOauth2(oauthToken.trim(), true);
 
         yt.setPlaylistPageCount(bot.getConfig().getMaxYTPlaylistPages());
         registerSourceManager(yt);
